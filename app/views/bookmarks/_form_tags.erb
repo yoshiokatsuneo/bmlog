@@ -1,0 +1,11 @@
+<%= form.fields_for :tags do |f| %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+  <% unless f.object.nil? || f.object.new_record? %>
+		<%= f.label :_destroy, 'Remove:' %>
+		<%= f.check_box :_destroy %>
+  <% end %>
+    </div>
+  </div>
+<% end %>
