@@ -1,7 +1,8 @@
 class Bmlog.Routers.BookmarksRouter extends Backbone.Router
   initialize: (options) ->
     @bookmarks = new Bmlog.Collections.BookmarksCollection()
-    @bookmarks.reset options.bookmarks
+    # @bookmarks.reset options.bookmarks
+    @bookmarks.fetch()
 
   routes:
     "new"      : "newBookmark"

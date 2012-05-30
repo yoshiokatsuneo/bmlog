@@ -6,4 +6,4 @@ class Bmlog.Models.Bookmark extends Backbone.Model
 
 class Bmlog.Collections.BookmarksCollection extends Backbone.Collection
   model: Bmlog.Models.Bookmark
-  url: '/bookmarks'
+  url: '/api/bookmarks'

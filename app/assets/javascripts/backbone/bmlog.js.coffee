@@ -9,3 +9,9 @@ window.Bmlog =
   Collections: {}
   Routers: {}
   Views: {}
+  init: ->
+    new Bmlog.Routers.BookmarksRouter()
+    Backbone.history.start()
+
+$(document).ready ->
+	Bmlog.init()

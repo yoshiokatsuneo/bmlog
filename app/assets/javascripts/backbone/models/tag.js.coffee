@@ -7,4 +7,4 @@ class Bmlog.Models.Tag extends Backbone.Model
 
 class Bmlog.Collections.TagsCollection extends Backbone.Collection
   model: Bmlog.Models.Tag
-  url: '/tags'
+  url: '/api/tags'
