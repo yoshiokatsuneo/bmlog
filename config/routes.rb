@@ -1,4 +1,6 @@
 Bmlog::Application.routes.draw do
+  get "main/index"
+
   scope "api" do
     resources :tags
     resources :bookmarks
