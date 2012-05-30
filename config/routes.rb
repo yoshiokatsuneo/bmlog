@@ -1,7 +1,8 @@
 Bmlog::Application.routes.draw do
-  resources :tags
-
-  resources :bookmarks
+  scope "api" do
+    resources :tags
+    resources :bookmarks
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
