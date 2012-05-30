@@ -1,5 +1,13 @@
 <h1>Listing bookmarks</h1>
 
+
+<form id="search_form" name="bookmarks">
+    Tag search:
+	<input type="text" name="search" id="search_text" value="<%= ((typeof search == 'undefined')?'':search) %>" >
+	<input type="submit"  value="Search" />
+</form>
+
+
 <table id="bookmarks-table">
   <tr>
     <th>Url</th>

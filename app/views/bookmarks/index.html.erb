@@ -1,5 +1,11 @@
 <%- model_class = Bookmark.new.class -%>
 <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+
+<%= form_tag bookmarks_path, :method => 'get', :id => "bookmarks_search" do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search", :name => nil%>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>

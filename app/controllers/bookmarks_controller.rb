@@ -2,8 +2,9 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.all
-
+    # @bookmarks = Bookmark.all
+    @bookmarks = Bookmark.search(params[:search])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bookmarks.to_json(:include => [:tags]) }
