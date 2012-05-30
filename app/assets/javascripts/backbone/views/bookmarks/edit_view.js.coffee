@@ -10,6 +10,8 @@ class Bmlog.Views.Bookmarks.EditView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    @model.set_tags_str(@model.get("tags_str"))
+    
     @model.save(null,
       success : (bookmark) =>
         @model = bookmark
@@ -17,7 +19,8 @@ class Bmlog.Views.Bookmarks.EditView extends Backbone.View
     )
 
   render : ->
-    $(@el).html(@template(@model.toJSON() ))
+    # $(@el).html(@template(@model.toJSON() ))
+    $(@el).html(@template(@model.toJSON_for_html()))
 
     this.$("form").backboneLink(@model)
 

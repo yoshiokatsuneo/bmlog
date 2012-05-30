@@ -1,6 +1,6 @@
 class Bmlog.Models.Tag extends Backbone.Model
   paramRoot: 'tag'
-
+  urlRoot: '/api/tags'
   defaults:
     name: null
     bookmark: null

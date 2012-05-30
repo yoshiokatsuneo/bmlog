@@ -14,7 +14,8 @@ class Bmlog.Views.Bookmarks.IndexView extends Backbone.View
     @$("tbody").append(view.render().el)
 
   render: =>
-    $(@el).html(@template(bookmarks: @options.bookmarks.toJSON() ))
+    # $(@el).html(@template(bookmarks: @options.bookmarks.toJSON() ))
+    $(@el).html(@template(bookmarks: @options.bookmarks.attributes ))
     @addAll()
 
     return this

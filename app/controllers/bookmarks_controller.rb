@@ -6,7 +6,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @bookmarks }
+      format.json { render json: @bookmarks.to_json(:include => [:tags]) }
     end
   end
 
@@ -17,7 +17,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @bookmark }
+      format.json { render json: @bookmark.to_json(:include => [:tags]) }
     end
   end
 
@@ -28,7 +28,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @bookmark }
+      format.json { render json: @bookmark.to_json(:include => [:tags]) }
     end
   end
 
@@ -45,7 +45,7 @@ class BookmarksController < ApplicationController
     respond_to do |format|
       if @bookmark.save
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
-        format.json { render json: @bookmark, status: :created, location: @bookmark }
+        format.json { render json: @bookmark.to_json(:include => [:tags]), status: :created, location: @bookmark }
       else
         format.html { render action: "new" }
         format.json { render json: @bookmark.errors, status: :unprocessable_entity }

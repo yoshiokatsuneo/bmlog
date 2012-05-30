@@ -19,8 +19,10 @@ class Bmlog.Views.Bookmarks.NewView extends Backbone.View
     e.stopPropagation()
 
     @model.unset("errors")
-
-    @collection.create(@model.toJSON(),
+    @model.set_tags_str(@model.get("tags_str"))
+    
+    # @collection.create(@model.toJSON(),
+    @collection.create(@model,
       success: (bookmark) =>
         @model = bookmark
         window.location.hash = "/#{@model.id}"
@@ -30,7 +32,7 @@ class Bmlog.Views.Bookmarks.NewView extends Backbone.View
     )
 
   render: ->
-    $(@el).html(@template(@model.toJSON() ))
+    $(@el).html(@template(@model.toJSON_for_html() ))
 
     this.$("form").backboneLink(@model)
 
