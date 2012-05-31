@@ -9,7 +9,9 @@ class Bmlog.Views.Bookmarks.NewView extends Backbone.View
   constructor: (options) ->
     super(options)
     @model = new @collection.model()
-
+    @model.bind("error", (model, error) ->
+      alert(error)
+    )
     @model.bind("change:errors", () =>
       this.render()
     )
@@ -18,6 +20,8 @@ class Bmlog.Views.Bookmarks.NewView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
+    if ! @model._validate({},{silent:true})
+      return
     @model.unset("errors")
     @model.set_tags_str(@model.get("tags_str"))
     

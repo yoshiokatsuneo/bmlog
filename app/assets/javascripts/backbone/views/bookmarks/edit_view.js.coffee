@@ -6,12 +6,20 @@ class Bmlog.Views.Bookmarks.EditView extends Backbone.View
   events :
     "submit #edit-bookmark" : "update"
 
+  initialize: () ->
+    @model.bind("error", (model, error) ->
+      alert(error)
+    )
+
   update : (e) ->
     e.preventDefault()
     e.stopPropagation()
 
+#    if ! @model._validate({},{silent:false})
+#      return
+
     @model.set_tags_str(@model.get("tags_str"))
-    
+          
     @model.save(null,
       success : (bookmark) =>
         @model = bookmark

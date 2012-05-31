@@ -4,6 +4,16 @@ class Bmlog.Models.Bookmark extends Backbone.Model
   defaults:
     url: null
 
+  validate: (attrs) ->
+    errors=[]
+    if(_.isEmpty(attrs.url))
+      errors.push("URL is empty")
+    if errors.length == 0
+      null
+    else
+      errors
+    # _.any(errors) ? errors : null;
+    
   initialize: ->
     if typeof @attributes.tags == 'undefined'
       @attributes.tags = []
