@@ -14,18 +14,19 @@
 ActiveRecord::Schema.define(:version => 20120530033243) do
 
   create_table "bookmarks", :force => true do |t|
-    t.string   "url"
+    t.string   "url",        :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.integer  "bookmark_id"
+    t.string   "name",        :null => false
+    t.integer  "bookmark_id", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   add_index "tags", ["bookmark_id"], :name => "index_tags_on_bookmark_id"
+  add_index "tags", ["name"], :name => "index_tags_on_name"
 
 end
