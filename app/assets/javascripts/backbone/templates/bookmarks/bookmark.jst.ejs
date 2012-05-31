@@ -1,5 +1,7 @@
-<td><%= url %></td>
+<td><a href="<%= url %>" target="_blank"><%= url %></a></td>
 <td><%= tags_str  %></td>
-<td><a href="#/<%= id %>">Show</td>
-<td><a href="#/<%= id %>/edit">Edit</td>
-<td><a href="#/<%= id %>/destroy" class="destroy">Destroy</a></td>
+<td>
+	<a href="#/<%= id %>" class="btn btn-mini">Show</a>
+	<a href="#/<%= id %>/edit" class="btn btn-mini">Edit</a>
+	<a href="#/<%= id %>/destroy" class="destroy btn btn-mini btn-danger">Destroy</a>
+</td>

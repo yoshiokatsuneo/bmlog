@@ -5,6 +5,7 @@ class Bmlog.Views.Bookmarks.IndexView extends Backbone.View
 
   events:
     "submit #search_form": "doSearch"
+    "click #search_button": "doSearch"
 
   initialize: () ->
     @options.bookmarks.bind('reset', @addAll)

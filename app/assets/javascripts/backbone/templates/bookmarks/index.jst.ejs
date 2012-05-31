@@ -1,22 +1,26 @@
-<h1>Listing bookmarks</h1>
+<h1>Bookmarks</h1>
 
-
+<br>
 <form id="search_form" name="bookmarks">
-    Tag search:
-	<input type="text" name="search" id="search_text" value="<%= ((typeof search == 'undefined')?'':search) %>" >
-	<input type="submit"  value="Search" />
+	<form class="form-inline">
+	  <div class="controls">
+	    <div class="input-append">
+	<input type="text" name="search" id="search_text" value="<%= ((typeof search == 'undefined')?'':search) %>" class="search-query" placeholder="Tag search"><button class="btn" type="button" id="search_button"><i class="icon-search"></i></button>
+
+	    </div>
+	  </div>
+	</form>
 </form>
 
 
-<table id="bookmarks-table">
+<table id="bookmarks-table" class="table table-striped">
   <tr>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>URL</th>
+    <th>Tags</th>
+    <th>Actions</th>
   </tr>
 </table>
 
 <br/>
 
-<a href="#/new">New Bookmark</a>
+<a href="#/new" class="btn btn-primary">New Bookmark</a>

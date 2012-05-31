@@ -23,15 +23,16 @@ class Bmlog.Models.Bookmark extends Backbone.Model
       tagmodel = new Bmlog.Models.Tag(tag);
       tagmodel.destroy()
     @attributes.tags = [];
-    tags_array = tags_str.split(/[, ]+/)
-    for tag in tags_array
-      @attributes.tags.push({name:tag})
+    if typeof tags_str != "undefined"
+      tags_array = tags_str.split(/[, ]+/)
+      for tag in tags_array
+        @attributes.tags.push({name:tag})
 
   get_tags_str: ->
     @attributes.tags.map((tag)-> tag.name ).join(', ')
 
   toJSON_for_html: ->
-    attr = _.clone(this.attributes)
+    attr = this.attributes
     attr.tags_str = @get_tags_str()
     attr
 
