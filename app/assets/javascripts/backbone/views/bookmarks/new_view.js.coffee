@@ -20,7 +20,7 @@ class Bmlog.Views.Bookmarks.NewView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
-    if ! @model._validate()
+    if ! @model._validate({},{silent:false})
       return
     @model.unset("errors")
     @model.set_tags_str(@model.get("tags_str"))
