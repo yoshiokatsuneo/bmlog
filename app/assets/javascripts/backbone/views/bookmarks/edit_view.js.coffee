@@ -19,11 +19,13 @@ class Bmlog.Views.Bookmarks.EditView extends Backbone.View
 #      return
 
     @model.set_tags_str(@model.get("tags_str"))
-          
+    @$("input").attr("disabled", "disabled")
+        
     @model.save(null,
       success : (bookmark) =>
         @model = bookmark
         window.location.hash = "/#{@model.id}"
+        @$("input").removeAttr("disabled")
     )
 
   render : ->
