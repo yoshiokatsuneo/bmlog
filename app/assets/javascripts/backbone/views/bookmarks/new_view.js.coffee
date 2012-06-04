@@ -20,13 +20,14 @@ class Bmlog.Views.Bookmarks.NewView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
 
-    if ! @model._validate({},{silent:true})
+    if ! @model._validate()
       return
     @model.unset("errors")
     @model.set_tags_str(@model.get("tags_str"))
     
     @$("input").attr("disabled", "disabled")
-    # @$("input").activity()
+    @$("#busy").activity({length: 3,  padding: 0})
+    
     # @collection.create(@model.toJSON(),
     @collection.create(@model,
       success: (bookmark) =>
@@ -34,8 +35,9 @@ class Bmlog.Views.Bookmarks.NewView extends Backbone.View
         window.location.hash = "/#{@model.id}"
 
       error: (bookmark, jqXHR) =>
-        @model.set({errors: $.parseJSON(jqXHR.responseText)})
         @$("input").removeAttr("disabled")
+        @$("#busy").activity(false)
+        @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
 
   render: ->
