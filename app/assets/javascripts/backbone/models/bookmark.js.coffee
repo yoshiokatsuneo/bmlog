@@ -17,6 +17,11 @@ class Bmlog.Models.Bookmark extends Backbone.Model
   initialize: ->
     if typeof @attributes.tags == 'undefined'
       @attributes.tags = []
+    @bind('change:url', @url_completion)
+  
+  url_completion: ->
+    if ! @attributes.url.match("http://")
+      @attributes.url = "http://" + @attributes.url    
     
   set_tags_str: (tags_str) ->
     for tag in @attributes.tags
